@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Bungee", cursive;
+}
+
+.roboto {
+	font-family: "Roboto", sans-serif;
+}
+
+.bg-primary {
+	background-color: #0b090a;
+}
+
+.bg-secondary {
+	background-color: #161a1d;
+}
+
+.bg-tertiary {
+	background-color: #d3d3d3;
+}
+
+.bungee-spice {
+	font-family: "Bungee Spice", cursive;
+}
+
+.font-color {
+	color: #ffba08;
+}
+
+.header-li {
+	display: inline-block;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.header-li-a {
+	text-decoration: none;
+}
+
+.main-height {
+	min-height: calc(100vh - 4rem);
+}
+
+.footer-div {
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+}
