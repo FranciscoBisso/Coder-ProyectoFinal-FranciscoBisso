@@ -1,0 +1,21 @@
+{% extends 'home.html' %} {% load static %}
+<!-- styles -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/user_form.css'%}" />
+{% endblock %} {% block title %}
+<title>Formulario - {{ form_name }}</title>
+{% endblock %} {% block main %}
+
+<form action="" method="POST" enctype="multipart/form-data" class="user-form">
+	{% csrf_token %}
+
+	<h2>{{ form_name }}</h2>
+
+	{{ form.as_p }}
+
+	<div class="div-btn">
+		<input type="submit" value="{{ button }}" id="btn" />
+	</div>
+</form>
+
+{% endblock %}

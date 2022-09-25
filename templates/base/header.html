@@ -1,0 +1,57 @@
+<header class="bg-secondary">
+	<nav>
+		<ul>
+			<li class="header-li">
+				<a
+					class="font-color header-li-a bungee-spice"
+					href="{% url 'Home' %}"
+					>HOME</a
+				>
+			</li>
+			{% if user.is_authenticated %}
+			<li class="header-li">
+				<a
+					class="font-color header-li-a bungee-spice"
+					href="{% url 'Logout' %}"
+					>Logout</a
+				>
+			</li>
+			{% if user.avatar %}
+			<li class="header-li">
+				<a
+					class="font-color header-li-a bungee-spice"
+					href="{% url 'UpdateUser' %}"
+					><img
+						src="{{user.avatar.img.url}}"
+						style="
+							width: 40px;
+							height: 40px;
+							border-radius: 0.375rem;
+							border: none;
+						"
+				/></a>
+			</li>
+			<li class="header-li">
+				<a class="font-color header-li-a bungee-spice" href="#"
+					>{{user.avatar.img.url}}</a
+				>
+			</li>
+			{% endif %} {% else %}
+			<li class="header-li">
+				<a
+					class="font-color header-li-a bungee-spice"
+					href="{% url 'Register' %}"
+					>Register</a
+				>
+			</li>
+			<li class="header-li">
+				<a
+					class="font-color header-li-a bungee-spice"
+					href="{% url 'Login' %}"
+					>Login</a
+				>
+			</li>
+			{% endif %}
+		</ul>
+	</nav>
+</header>
