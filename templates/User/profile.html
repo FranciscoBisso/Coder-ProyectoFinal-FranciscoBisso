@@ -7,12 +7,14 @@
 {% endblock %} {% block main %}
 
 <div>
-	<h2>MY PROFILE</h2>
+	<h2 style="text-align: center; padding-top: 10%">MY PROFILE</h2>
 
+	{% if user.avatar %}
 	<img
 		src="{{user.avatar.img.url}}"
 		style="width: 40px; height: 40px; border-radius: 0.375rem; border: none"
 	/>
+	{% endif %}
 
 	<h4 class='bungee-spice'>username:<p class="font-color">{{ user.username }}</p><h4>
 	<h4 class='bungee-spice'>email:<p class="font-color">{{ user.email }}</p><h4>

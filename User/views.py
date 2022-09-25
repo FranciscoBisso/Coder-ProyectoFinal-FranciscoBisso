@@ -79,6 +79,8 @@ def user_profile(req):
 
     return render(req, 'User/profile.html', context)
  
+
+
 # PROCESAMIENTO DE EDICIÓN DE PERFIL
 @login_required
 def update_profile(req):

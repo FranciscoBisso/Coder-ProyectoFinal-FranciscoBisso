@@ -31,6 +31,12 @@
 						"
 				/></a>
 			</li>
+			{% else %}
+			<li class="header-li">
+				<a class="font-color header-li-a" href="{% url 'ProfileUser' %}"
+					>{{user.username}}'s profile</a
+				>
+			</li>
 			{% endif %} {% else %}
 			<li class="header-li">
 				<a
