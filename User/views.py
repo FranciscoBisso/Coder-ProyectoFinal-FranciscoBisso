@@ -42,6 +42,7 @@ def login_request(req):
     return render(req, 'User/user_form.html', context)
 
 
+
 # PROCESAMIENTO DE REGISTRO
 def register_request(req):
     if req.method == 'POST':
@@ -67,6 +68,18 @@ def register_request(req):
     return render(req, 'User/user_form.html', context)
 
 
+
+# MOSTRAR PERFIL
+@login_required
+def user_profile(req):
+    user = req.user
+    context = {
+        'user': user
+    }
+
+    return render(req, 'User/profile.html', context)
+ 
+# PROCESAMIENTO DE EDICIÓN DE PERFIL
 @login_required
 def update_profile(req):
     user = req.user
@@ -100,6 +113,9 @@ def update_profile(req):
 
     return render(req, 'User/user_form.html', context)
 
+
+
+# PROCESAMIENTO DE FORMULARIO DE AVATAR
 @login_required
 def form_avatar(req):
     user = req.user

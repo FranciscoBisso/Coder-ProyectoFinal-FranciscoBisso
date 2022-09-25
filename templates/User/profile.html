@@ -1,0 +1,30 @@
+{% extends 'home.html' %} {% load static %}
+<!-- styles -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/user_form.css'%}" />
+{% endblock %} {% block title %}
+<title>MY PROFILE</title>
+{% endblock %} {% block main %}
+
+<div>
+	<h2>MY PROFILE</h2>
+
+	<img
+		src="{{user.avatar.img.url}}"
+		style="width: 40px; height: 40px; border-radius: 0.375rem; border: none"
+	/>
+
+	<h4 class='bungee-spice'>username:<p class="font-color">{{ user.username }}</p><h4>
+	<h4 class='bungee-spice'>email:<p class="font-color">{{ user.email }}</p><h4>
+
+	<div>
+		<a class="font-color header-li-a" href="{% url 'Avatar' %}"
+			>UPLOAD AVATAR</a
+		>
+		<a class="font-color header-li-a" href="{% url 'UpdateUser' %}"
+			>EDIT PROFILE</a
+		>
+	</div>
+</div>
+
+{% endblock %}
