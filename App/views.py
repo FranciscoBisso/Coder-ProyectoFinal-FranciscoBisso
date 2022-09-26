@@ -106,6 +106,7 @@ def edit_post(req, id):
 
 
 # ELIMINAR POSTS
+@login_required
 def delete_post(req, id):
     try:
         deletable_post = Post.objects.get(id=id)
@@ -117,3 +118,44 @@ def delete_post(req, id):
         messages.info(req, 'Unable to delete a non-existent post!')        
     
     return redirect('MyPost')
+
+
+
+##  COMENTARIOS  ##
+# CREACIÓN DE NUEVOS COMENTARIOS
+@login_required
+def new_comment(req, id):
+    if req.method == 'POST':
+        form = CommentForm(req.POST)
+        post = Post.objects.get(id=id)
+        user = req.user
+        
+        if form.is_valid():
+            data = form.cleaned_data
+            
+            comment = Comment(
+                comment=data.get('comment'), 
+                related_post=post,
+                author=user
+            )
+            comment.save()
+            
+            messages.info(req,
+                  'Uploaded comment!')
+        else:
+            messages.info(req, 'Ups! Please try again.')
+            
+        return redirect('Comment', id) 
+        
+    
+    post = Post.objects.get(id=id)
+    old_comments = Comment.objects.filter(related_post=id)
+    contexto = {
+        'form': CommentForm(),
+        'form_name': 'COMMENT',
+        'button': 'COMMENT',
+        'post': post,
+        'old_comments': old_comments
+    }
+    return render(req, 'blog/comment.html', contexto)
+

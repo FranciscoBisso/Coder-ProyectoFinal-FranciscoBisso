@@ -1,0 +1,57 @@
+{% extends 'home.html' %} {% load static %}
+<!-- styles -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/form.css'%}" />
+{% endblock %} {% block title %}
+<title>Formulario - {{ form_name }}</title>
+{% endblock %} {% block main %}
+
+<form action="" method="POST" enctype="multipart/form-data" class="user-form">
+	{% csrf_token %}
+
+	<h2>{{ form_name }}</h2>
+	<div>
+		<h5 class="font-color">
+			<p style="color: #ebebeb">author:</p>
+			{{post.author}}
+		</h5>
+		<h4 class="font-color">
+			<p style="color: #ebebeb">title:</p>
+			{{post.title}}
+		</h4>
+		<h6 class="font-color">{{post.subtitle}}</h6>
+		<img
+			src="{{post.img.url}}"
+			style="width: 400px; height: 400px; border-radius: 0.375rem"
+		/>
+		<h6 class="font-color">
+			<p style="color: #ebebeb">description:</p>
+			{{post.description}}
+		</h6>
+	</div>
+
+	{{ form.as_p }}
+	<div class="div-btn">
+		<input type="submit" value="{{ button }}" id="btn" />
+	</div>
+	<h4 style="color: #ffba08; text-align: center; margin: 2% 0">
+		Out there it's said...
+	</h4>
+	{% for comment in old_comments %}
+	<div
+		style="
+			padding: 2%;
+			margin: 2% 0;
+			border: 1px solid #ffba08;
+			border-radius: 0.375rem;
+		"
+	>
+		<p class="bungee-spice" style="color: #ebebeb; padding-left: 2%">
+			- {{comment.author}}:
+		</p>
+		<p style="color: #ebebeb">{{comment.comment}}</p>
+	</div>
+	{% endfor %}
+</form>
+
+{% endblock %}
