@@ -38,7 +38,7 @@ def new_post(req):
             post.save(data)
             
             messages.info(req, 'All right, all right, all right!')
-            return redirect('Home')
+            return redirect('MyPost')
         
         else:
             messages.info(req, '¡Ups! Please try again.')

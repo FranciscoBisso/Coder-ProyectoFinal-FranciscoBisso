@@ -3,40 +3,31 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/form.css'%}" />
 {% endblock %} {% block title %}
-<title>Formulario - {{ form_name }}</title>
+<title>{{post.title.upper}}</title>
 {% endblock %} {% block main %}
 
 <form action="" method="POST" enctype="multipart/form-data" class="user-form">
 	{% csrf_token %}
 
-	<h2>{{ form_name }}</h2>
+	<h2>{{post.title}}</h2>
 	<div>
-		<h5 class="font-color">
-			<p style="color: #ebebeb">author:</p>
-			{{post.author}}
-		</h5>
-		<h4 class="font-color">
-			<p style="color: #ebebeb">title:</p>
-			{{post.title}}
-		</h4>
-		<h6 class="font-color">{{post.subtitle}}</h6>
+		<h6 class="bungee-spice">{{post.author}}</h6>
+		<h4 style="color: #ebebeb">{{post.subtitle}}</h4>
 		<img
 			src="{{post.img.url}}"
 			style="width: 100%; border-radius: 0.375rem"
 		/>
-		<h6 class="font-color">
-			<p style="color: #ebebeb">description:</p>
-			{{post.description}}
-		</h6>
+		<p style="color: #ebebeb">{{post.description}}</p>
 	</div>
 
 	{{ form.as_p }}
+
 	<div class="div-btn">
 		<input type="submit" value="{{ button }}" id="btn" />
 	</div>
-	<h4 style="color: #ffba08; text-align: center; margin: 2% 0">
+	<h3 style="color: #ebebeb; text-align: center; margin-top: 20%">
 		Out there it's said...
-	</h4>
+	</h3>
 	{% for comment in old_comments %}
 	<div
 		style="
@@ -46,10 +37,22 @@
 			border-radius: 0.375rem;
 		"
 	>
-		<p class="bungee-spice" style="color: #ebebeb; padding-left: 2%">
+		<h5 class="bungee-spice" style="color: #ebebeb; padding-left: 2%">
 			- {{comment.author}}:
-		</p>
-		<p style="color: #ebebeb">{{comment.comment}}</p>
+		</h5>
+		<h6 style="color: #ebebeb">{{comment.comment}}</h6>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="16"
+			height="16"
+			fill="currentColor"
+			class="bi bi-trash3-fill"
+			viewBox="0 0 16 16"
+		>
+			<path
+				d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+			/>
+		</svg>
 	</div>
 	{% endfor %}
 </form>
