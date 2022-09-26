@@ -26,6 +26,6 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return f"AUTHOR: {self.author} - RELATED POST: {self.related_post} - DATE: {self.date} - COMMENT: {self.comment[0:15]}..."
+        return f"AUTHOR: {self.author} - RELATED POST: {self.related_post.id} - DATE: {self.date} - COMMENT: {self.comment[0:15]}..."
     
 
