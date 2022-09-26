@@ -45,6 +45,11 @@
 			href="{% url 'EditPost' post.id %}"
 			>Edit</a
 		>
+		<a
+			style="text-decoration: none; display: block; text-align: center"
+			href="{% url 'DeletePost' post.id %}"
+			>Delete</a
+		>
 	</div>
 	{% endfor %}
 </div>

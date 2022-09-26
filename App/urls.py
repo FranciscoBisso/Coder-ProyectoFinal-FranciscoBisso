@@ -7,4 +7,5 @@ urlpatterns = [
     path('new-post', new_post, name='NewPost'),
     path('my-post', my_post, name='MyPost'),
     path('edit-post/<int:id>', edit_post, name='EditPost'),
+    path('delete-post/<int:id>', delete_post, name='DeletePost'),
 ]

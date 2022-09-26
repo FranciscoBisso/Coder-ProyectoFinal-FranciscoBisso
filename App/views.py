@@ -64,7 +64,7 @@ def my_post(req):
 
 
 
-# EDICIÓN DE MIS POSTS EXISTENTES. FALTA COMPLETAR
+# EDICIÓN DE MIS POSTS EXISTENTES.
 @login_required
 def edit_post(req, id):
     editable_post = Post.objects.get(id=id)
@@ -86,8 +86,9 @@ def edit_post(req, id):
         
         else:
             messages.info(req, '¡Ups! Please try again.')
-            return render(req, 'BlogApp/editar-img.html', context)
-    # 2) cargo el formulario con los datos del familiar a editar pre-cargados
+            return render(req, 'blog/edit-post.html', context)
+    
+    
     context = {
         'form': PostForm(initial={
             'title': editable_post.title,     
@@ -101,3 +102,18 @@ def edit_post(req, id):
     }
     
     return render(req, 'blog/edit-post.html', context)
+
+
+
+# ELIMINAR POSTS
+def delete_post(req, id):
+    try:
+        deletable_post = Post.objects.get(id=id)
+
+        deletable_post.delete()
+        
+        messages.info(req, f'Deleted post: {deletable_post.title}!')
+    except:
+        messages.info(req, 'Unable to delete a non-existent post!')        
+    
+    return redirect('MyPost')
