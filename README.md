@@ -11,7 +11,7 @@ El proyecto se pensó como una página donde se pueden compartir y comentar meme
 
 -   Francisco Bisso.
 
-## Construido con 🛠️ 📋
+## Construido con 🛠️
 
 -   Python 3.9.13
 -   Django 4.1.1
