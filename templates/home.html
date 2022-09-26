@@ -80,22 +80,15 @@
 				{% for post in posts %}
 				<div
 					style="
-						padding-bottom: 2%;
 						border-radius: 0.375rem;
 						background-color: #161a1d;
 						padding: 4%;
 						margin: 0 0 2%;
 					"
 				>
-					<h5 class="font-color">
-						<p style="color: #ebebeb">author:</p>
-						{{post.author}}
-					</h5>
-					<h4 class="font-color">
-						<p style="color: #ebebeb">title:</p>
+					<h4 class="font-color" style="padding-bottom: 2%">
 						{{post.title}}
 					</h4>
-					<h6 class="font-color">{{post.subtitle}}</h6>
 					<img
 						src="{{post.img.url}}"
 						style="
@@ -110,9 +103,10 @@
 							text-decoration: none;
 							display: block;
 							text-align: center;
+							padding-top: 2%;
 						"
 						href="{% url 'Comment' post.id %}"
-						>Comment</a
+						>See more</a
 					>
 				</div>
 				{% endfor %}
