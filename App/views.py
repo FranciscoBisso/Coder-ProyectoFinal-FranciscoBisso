@@ -4,8 +4,15 @@ from django.contrib.auth.decorators import login_required
 from App.models import *
 from App.forms import *
 
-## Create your views here.
 
+## SOBRE MI  ##
+# PÁGINA PRINCIPAL DONDE SE MUESTRAN TODOS LOS POSTS EXISTENTES
+def about_me(req):
+    return render(req, 'base/about.html')
+
+
+
+## POSTS  ##
 # PÁGINA PRINCIPAL DONDE SE MUESTRAN TODOS LOS POSTS EXISTENTES
 def home(req):
     posts = Post.objects.all()

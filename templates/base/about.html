@@ -1,0 +1,45 @@
+{% extends 'home.html' %} {% load static %}
+<!-- styles -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/form.css'%}" />
+{% endblock %} {% block title %}
+<title>ABOUT ME</title>
+{% endblock %}{% block main %}
+<div>
+	<h2 style="padding-top: 10%">Hello there...!</h2>
+	<p
+		style="
+			color: #ebebeb;
+			padding-top: 2%;
+			text-align: justify;
+			width: 60%;
+			margin: 0 auto;
+		"
+	>
+		I'm Francisco, I'm 28 years old and a law student at UBA. Although my
+		interests have always been oriented towards the humanities, having in
+		front of me the opportunity to enter this unknown world that is
+		programming, was a challenge that I could not miss. Ir remains to be
+		seen where these mysterious waters may take my.
+	</p>
+</div>
+<div>
+	<h2 style="padding-top: 10%">¡Hola!</h2>
+	<p
+		style="
+			color: #ebebeb;
+			padding-top: 2%;
+			text-align: justify;
+			width: 60%;
+			margin: 0 auto;
+		"
+	>
+		Soy Francisco, tengo 28 años y soy estudiante de abogacía en la UBA. Si
+		bien mis intereses siempre han estado orientados hacia las humanidades,
+		al tener en frente la oportunidad concreta de adentrarme en este mundo
+		desconocido que es la programación, fue un desafío que no pude dejar
+		pasar. Ya veremos a que puerto nos llevan estas aguas misteriosas.
+	</p>
+</div>
+
+{% endblock %}
