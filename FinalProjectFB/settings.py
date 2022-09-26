@@ -126,6 +126,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+LOGIN_URL='Login'
+
+
 # Donde se van a guardar las IMGs
 MEDIA_URL = '/media/'
 # De donde va a capturar cuando vayamos a hacer referencia, dentro del html a esas imgs, es de donde va a buscarlas
