@@ -33,3 +33,17 @@ El proyecto se pensó como una página donde se pueden compartir y comentar meme
 -   Página para ver con mayor profundidad un post y poder comentar: http://127.0.0.1:8000/app/comment/...
 -   Página para editar un post: http://127.0.0.1:8000/app/edit-post/...
 -   Página para eliminar un post: http://127.0.0.1:8000/app/delete-post/...
+
+## Pruebas Ejecutadas ⚙️
+
+Las pruebas realizadas fueron:
+
+-   Se creó un usuario desde el formulario que solicita los datos.
+-   Se creó un post desde el formulario que solicita los datos.
+-   Se creó un comentario desde el formulario que solicita los datos.
+
+-   Se editó un usuario desde el formulario que solicita los datos.
+-   Se editó un post desde el formulario que solicita los datos.
+-   Se editó un comentario desde el formulario que solicita los datos.
+
+-   Se verificaron los status de respuesta de las páginas públicas.
