@@ -3,13 +3,18 @@ from django.urls import reverse
 import datetime
 from django.contrib.auth.models import User
 from App.models import Post, Comment
-from User.models import *
 
+# test_creation_of_post_and_comment ---> Ran 1 test in 0.002s OK
 
 class AppTestCase(TestCase):
     def setUp(self):
+        User.objects.create(
+            username='user',
+            email='user@user.com',
+            password='Usuer@.,123',
+        )
         Post.objects.create(
-            author=User.objects.get(id=1),
+            author=User.objects.get(username='user'),
             title='Title',
             subtitle='Lorem ipsum',
             description='Lorem ipsum dolor sit amet consectetur adipiscing.', 
@@ -17,8 +22,8 @@ class AppTestCase(TestCase):
             img='/media/img-post/baco-ariadna.jpg'
         )
         Comment.objects.create(
-            author=User.objects.get(id=1),
-            related_post=Post.objects.get(id=1),
+            author=User.objects.get(username='user'),
+            related_post=Post.objects.get(title='Title',),
             comment='Lorem ipsum dolor',
             date=datetime.datetime(2022, 9, 2, 11, 21, 37, 582857),
         )
