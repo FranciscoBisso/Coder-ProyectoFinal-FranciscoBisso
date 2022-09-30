@@ -75,56 +75,67 @@ def my_post(req):
 @login_required
 def edit_post(req, id):
     editable_post = Post.objects.get(id=id)
- 
-    if req.method == 'POST':
-        form = PostForm(req.POST, req.FILES)
-        
-        if form.is_valid():
-            data = form.cleaned_data
-            editable_post.title = data.get('title')        
-            editable_post.subtitle = data.get('subtitle')        
-            editable_post.description = data.get('description')        
-            editable_post.img = data.get('img')        
-            editable_post.save()
+    user = req.user
+    if user.id == editable_post.author.id:
+        if req.method == 'POST':
+            form = PostForm(req.POST, req.FILES)
             
-            messages.info(req, 'Post edited successfully!')
+            if form.is_valid():
+                data = form.cleaned_data
+                editable_post.title = data.get('title')        
+                editable_post.subtitle = data.get('subtitle')        
+                editable_post.description = data.get('description')        
+                editable_post.img = data.get('img')        
+                editable_post.save()
+                
+                messages.info(req, 'Post edited successfully!')
+                
+                return redirect('MyPost')
             
-            return redirect('Home')
+            else:
+                messages.info(req, '¡Ups! Please try again.')
+                
         
-        else:
-            messages.info(req, '¡Ups! Please try again.')
-            return render(req, 'blog/edit-post.html', context)
-    
-    
-    context = {
-        'form': PostForm(initial={
-            'title': editable_post.title,     
-            'subtitle': editable_post.subtitle,    
-            'description': editable_post.description,   
-            'img': editable_post.img
-        }),
-        'editable_post': editable_post,
-        'form_name': 'EDIT POST',
-        'button': 'EDIT',
-    }
-    
-    return render(req, 'blog/edit-post.html', context)
+        
+        context = {
+            'form': PostForm(initial={
+                'title': editable_post.title,     
+                'subtitle': editable_post.subtitle,    
+                'description': editable_post.description,   
+                'img': editable_post.img
+            }),
+            'editable_post': editable_post,
+            'form_name': 'EDIT POST',
+            'button': 'EDIT',
+        }
+        
+        return render(req, 'blog/edit-post.html', context)
+    else:
+        messages.info(req, 'Only the author of the post can edit it')
+            
+        return redirect('Home')
 
 
 
 # ELIMINAR POSTS
 @login_required
 def delete_post(req, id):
-    try:
-        deletable_post = Post.objects.get(id=id)
-
-        deletable_post.delete()
-        
-        messages.info(req, f'Deleted post: {deletable_post.title}!')
-    except:
-        messages.info(req, 'Unable to delete a non-existent post!')        
+    deletable_post = Post.objects.get(id=id)
+    user = req.user
     
-    return redirect('MyPost')
+    if user.id == deletable_post.author.id:
+        try:
+
+            deletable_post.delete()
+            
+            messages.info(req, f'Deleted post: {deletable_post.title}!')
+        except:
+            messages.info(req, 'Unable to delete a non-existent post!')        
+        
+        return redirect('MyPost')
+    else:
+        messages.info(req, 'Only the author of the post can delete it.')
+        return redirect('Home')
 
 
 
