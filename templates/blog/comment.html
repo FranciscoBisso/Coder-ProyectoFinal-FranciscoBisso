@@ -25,6 +25,7 @@
 	<div class="div-btn">
 		<input type="submit" value="{{ button }}" id="btn" />
 	</div>
+
 	<h3 style="color: #ebebeb; text-align: center; margin-top: 20%">
 		Out there it's said...
 	</h3>
@@ -33,15 +34,23 @@
 		style="
 			padding: 2%;
 			margin: 2% 0;
-			border: 1px solid #ffba08;
-			border-radius: 0.375rem;
+			border-bottom: 1px solid #ffba08;
+			{% comment %} border-radius: 0.375rem; {% endcomment %}
 		"
 	>
 		<h5 class="bungee-spice" style="color: #ebebeb; padding-left: 2%">
 			- {{comment.author}}:
 		</h5>
 		<h6 style="color: #ebebeb">{{comment.comment}}</h6>
+		<h6 style="text-align: end">
+			<a
+				style="color: red; text-decoration: none"
+				href="{% url 'DeleteComment' comment.id %}"
+				>Delete</a
+			>
+		</h6>
 	</div>
+
 	{% endfor %}
 </form>
 

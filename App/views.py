@@ -148,7 +148,7 @@ def new_comment(req, id):
             comment.save()
             
             messages.info(req,
-                  'Uploaded comment!')
+                  'Comment uploaded!')
         else:
             messages.info(req, 'Ups! Please try again.')
             
@@ -157,12 +157,35 @@ def new_comment(req, id):
     
     post = Post.objects.get(id=id)
     old_comments = Comment.objects.filter(related_post=id)
-    contexto = {
+    context = {
         'form': CommentForm(),
         'form_name': 'COMMENT',
         'button': 'COMMENT',
         'post': post,
         'old_comments': old_comments
     }
-    return render(req, 'blog/comment.html', contexto)
+    return render(req, 'blog/comment.html', context)
 
+
+
+# ELIMINAR POSTS
+@login_required
+def delete_comment(req, id):
+    try:
+        
+        deletable_comment = Comment.objects.get(id=id)
+        post_id = deletable_comment.related_post.id
+        print(f'post_id ---> {post_id}')
+
+        deletable_comment.delete() 
+        
+        messages.info(req, f'Comment Deleted.')
+        return redirect('Comment', post_id)
+    
+    except:
+        messages.info(req, 'Unable to delete a non-existent comment!')
+        return redirect('Comment', post_id)
+    
+             
+    
+    
