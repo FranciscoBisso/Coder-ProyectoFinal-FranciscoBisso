@@ -6,8 +6,8 @@
 <title>MY PROFILE</title>
 {% endblock %} {% block main %}
 
-<div>
-	<h2 style="text-align: center; padding-top: 10%">MY PROFILE</h2>
+<div class="user-form" style="padding: 5% 0">
+	<h2 style="text-align: center; margin: 6% auto">MY PROFILE</h2>
 
 	{% if user.avatar %}
 	<img
@@ -15,15 +15,91 @@
 		style="width: 40px; height: 40px; border-radius: 0.375rem; border: none"
 	/>
 	{% endif %}
-
-	<h4 class='bungee-spice'>username:<p class="font-color">{{ user.username }}</p><h4>
-	<h4 class='bungee-spice'>email:<p class="font-color">{{ user.email }}</p><h4>
-
 	<div>
-		<a class="font-color header-li-a" href="{% url 'Avatar' %}"
+		<div>
+			<h4
+				class="bungee-spice"
+				style="
+					margin-bottom: 0.5rem;
+					margin-top: 1rem;
+					padding-left: 2%;
+				"
+			>
+				username:
+			</h4>
+			<p
+				style="
+					width: 100%;
+					padding: 0.375rem 0.75rem;
+					font-size: 1rem;
+					font-weight: 400;
+					line-height: 1.5;
+					border: none;
+					border-radius: 0.375rem;
+					color: #ffffff;
+					background-color: #373a3e;
+				"
+			>
+				{{ user.username }}
+			</p>
+		</div>
+		<div>
+			<h4
+				class="bungee-spice"
+				style="
+					margin-bottom: 0.5rem;
+					margin-top: 1rem;
+					padding-left: 2%;
+				"
+			>
+				email:
+			</h4>
+			<p
+				style="
+					width: 100%;
+					padding: 0.375rem 0.75rem;
+					font-size: 1rem;
+					font-weight: 400;
+					line-height: 1.5;
+					border: none;
+					border-radius: 0.375rem;
+					color: #ffffff;
+					background-color: #373a3e;
+				"
+			>
+				{{ user.email }}
+			</p>
+		</div>
+	</div>
+
+	<div style="display: flex; flex-direction: column; margin: 6% auto">
+		<a
+			id="btn"
+			style="
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+				margin: 2% auto;
+				color: #39b54a;
+				border-radius: 0.375rem;
+				padding: 1%;
+			"
+			href="{% url 'Avatar' %}"
 			>UPLOAD AVATAR</a
 		>
-		<a class="font-color header-li-a" href="{% url 'UpdateUser' %}"
+		<a
+			id="btn"
+			style="
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+				margin: 2% auto;
+				color: #ffba08;
+				border: 1px solid;
+				border-radius: 0.375rem;
+				padding: 1%;
+			"
+			href="{% url 'UpdateUser' %}"
 			>EDIT PROFILE</a
 		>
 	</div>
