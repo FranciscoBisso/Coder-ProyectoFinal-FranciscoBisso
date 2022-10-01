@@ -47,3 +47,5 @@ Las pruebas realizadas fueron:
 -   Se editó un comentario desde el formulario que solicita los datos.
 
 -   Se verificaron los status de respuesta de las páginas públicas.
+
+Las pruebas se encuentran en App/test.py.
