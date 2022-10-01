@@ -2,33 +2,41 @@
 	<nav>
 		<ul class="header-ul">
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'Home' %}"
-					>HOME</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'Home' %}"
+						>HOME</a
+					>
+				</h3>
 			</li>
 			{% if user.is_authenticated %}
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'NewPost' %}"
-					>new post</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'NewPost' %}"
+						>new post</a
+					>
+				</h3>
 			</li>
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'MyPost' %}"
-					>my posts</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'MyPost' %}"
+						>my posts</a
+					>
+				</h3>
 			</li>
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'Logout' %}"
-					>Logout</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'Logout' %}"
+						>Logout</a
+					>
+				</h3>
 			</li>
 			{% if user.avatar %}
 			<li class="header-li">
@@ -47,24 +55,32 @@
 			</li>
 			{% else %}
 			<li class="header-li">
-				<a class="font-color header-li-a" href="{% url 'ProfileUser' %}"
-					>{{user.username}}'s profile</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a"
+						href="{% url 'ProfileUser' %}"
+						>{{user.username}}'s profile</a
+					>
+				</h3>
 			</li>
 			{% endif %} {% else %}
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'Register' %}"
-					>Register</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'Register' %}"
+						>Register</a
+					>
+				</h3>
 			</li>
 			<li class="header-li">
-				<a
-					class="font-color header-li-a bungee-spice"
-					href="{% url 'Login' %}"
-					>Login</a
-				>
+				<h3>
+					<a
+						class="font-color header-li-a bungee-spice"
+						href="{% url 'Login' %}"
+						>Login</a
+					>
+				</h3>
 			</li>
 			{% endif %}
 		</ul>
